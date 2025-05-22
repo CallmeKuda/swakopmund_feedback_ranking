@@ -16,17 +16,16 @@ This project provides a semi-automated solution using **Robot Framework**, **Sel
 🚀 How to Run
 Option 1: Manual
 
-python -m robot --outputdir output tests/feedback_analysis.robot
+    python -m robot --outputdir output tests/feedback_analysis.robot
 
 Option 2: Use Shortcut Script
+Windows:
 
-    Windows:
+    run_tests.bat
 
-run_tests.bat
 
 Linux/macOS:
 
     ./run_tests.sh
 
-📊 Outputs & Logs
 
