@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.10 on win32)" generated="2025-05-26T04:34:09.525421" rpa="false" schemaversion="5">
+<suite id="s1" name="Feedback Analysis" source="C:\Users\KUDA\Desktop\swakopmund_feedback_ranking\tests\feedback_analysis.robot">
+<kw name="Open Browser To NTS Reviews" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-05-26T04:34:14.422175" level="INFO">Opening browser 'Chrome' to base url 'https://www.namibia-tours-safaris.com/about-us/traveller-reviews'.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-05-26T04:34:14.422175" elapsed="15.528004"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-05-26T04:34:29.951183" elapsed="0.345171"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>css=.reviews-div</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-05-26T04:34:30.296354" elapsed="0.048523"/>
+</kw>
+<status status="PASS" start="2025-05-26T04:34:14.419181" elapsed="15.925696"/>
+</kw>
+<test id="s1-t1" name="Scrape NTS Traveller Reviews" line="15">
+<kw name="Go To NTS Reviews Page">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-05-26T04:34:30.347874" level="INFO">Opening url 'https://www.namibia-tours-safaris.com/about-us/traveller-reviews'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-05-26T04:34:30.346874" elapsed="2.902951"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Traveller Reviews</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.249825" elapsed="0.096536"/>
+</kw>
+<status status="PASS" start="2025-05-26T04:34:30.346874" elapsed="2.999487"/>
+</kw>
+<kw name="Scrape All NTS Reviews">
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-05-26T04:34:33.348365" level="INFO">${reviews} = []</msg>
+<var>${reviews}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.347360" elapsed="0.001005"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-05-26T04:34:33.398905" level="INFO">${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="3b079a2d08deb20d779c79129fd7b97d", element="f.A0034F4B680B5511D9E7267F6E1672F5.d.BEEA07C6E1D0E0FCEB439E25EDA7118F.e.2346")&gt;]</msg>
+<var>${elements}</var>
+<arg>css=.reviews-div</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.348365" elapsed="0.051542"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-05-26T04:34:33.502189" level="INFO">${name} = More About Us</msg>
+<var>${name}</var>
+<arg>xpath=.//h3</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.399907" elapsed="0.102282"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-05-26T04:34:33.552182" level="INFO">${comment} = Having been in the business for three decades, we sure have received a huge amount of feedback over the years. Listening to our clients, all reviews are taken to heart in the ongoing process to consta...</msg>
+<var>${comment}</var>
+<arg>xpath=.//p</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.502189" elapsed="0.049993"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-26T04:34:33.555184" level="INFO">${review} = {'name': 'More About Us', 'comment': 'Having been in the business for three decades, we sure have received a huge amount of feedback over the years. Listening to our clients, all reviews are taken to ...</msg>
+<var>${review}</var>
+<arg>name=${name}</arg>
+<arg>comment=${comment}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.554184" elapsed="0.001000"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${reviews}</arg>
+<arg>${review}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.556187" elapsed="0.000000"/>
+</kw>
+<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="3b079a2d08deb20d779c79129fd7b97d", element="f.A0034F4B680B5511D9E7267F6E1672F5.d.BEEA07C6E1D0E0FCEB439E25EDA7118F.e.2346")&gt;</var>
+<status status="PASS" start="2025-05-26T04:34:33.399907" elapsed="0.156280"/>
+</iter>
+<var>${element}</var>
+<value>@{elements}</value>
+<status status="PASS" start="2025-05-26T04:34:33.399907" elapsed="0.156280"/>
+</for>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-05-26T04:34:33.558192" level="INFO">${reviews} = [{'name': 'More About Us', 'comment': 'Having been in the business for three decades, we sure have received a huge amount of feedback over the years. Listening to our clients, all reviews are taken to...</msg>
+<arg>${reviews}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.557190" elapsed="0.001002"/>
+</kw>
+<status status="PASS" start="2025-05-26T04:34:33.347360" elapsed="0.210832"/>
+</kw>
+<kw name="Save Data To JSON">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-26T04:34:33.561182" level="INFO">${json} = [
+  {
+    "name": "More About Us",
+    "comment": "Having been in the business for three decades, we sure have received a huge amount of feedback over the years. Listening to our clients, all reviews ...</msg>
+<var>${json}</var>
+<arg>json.dumps(${reviews}, indent=2)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.560185" elapsed="0.000997"/>
+</kw>
+<kw name="Create File" owner="OperatingSystem">
+<msg time="2025-05-26T04:34:33.564183" level="INFO" html="true">Created file '&lt;a href="file://C:\Users\KUDA\Desktop\swakopmund_feedback_ranking\output\nts_reviews.json"&gt;C:\Users\KUDA\Desktop\swakopmund_feedback_ranking\output\nts_reviews.json&lt;/a&gt;'.</msg>
+<arg>${path}</arg>
+<arg>${json}</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.562184" elapsed="0.001999"/>
+</kw>
+<arg>${OUTPUT_JSON}</arg>
+<status status="PASS" start="2025-05-26T04:34:33.559182" elapsed="0.006000"/>
+</kw>
+<kw name="Generate Review Graph">
+<kw name="Run Process" owner="Process">
+<msg time="2025-05-26T04:34:33.566183" level="INFO">Starting process:
+python scripts/plot_reviews.py</msg>
+<msg time="2025-05-26T04:34:33.614722" level="INFO">Waiting for process to complete.</msg>
+<msg time="2025-05-26T04:34:47.566304" level="INFO">Process completed.</msg>
+<msg time="2025-05-26T04:34:47.566304" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>python</arg>
+<arg>scripts/plot_reviews.py</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2025-05-26T04:34:33.566183" elapsed="14.000121"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-05-26T04:34:47.567308" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${result.rc}</arg>
+<arg>0</arg>
+<arg>msg=Graph generation failed</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-05-26T04:34:47.566304" elapsed="0.002003"/>
+</kw>
+<doc>Run Python script to generate review graph</doc>
+<status status="PASS" start="2025-05-26T04:34:33.565182" elapsed="14.003125"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-05-26T04:34:48.003540" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-05-26T04:34:47.568307" elapsed="0.437237"/>
+</kw>
+<doc>Scrape traveler reviews from Namibia Tours &amp; Safaris website</doc>
+<status status="PASS" start="2025-05-26T04:34:30.344877" elapsed="17.664663"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-05-26T04:34:48.012541" elapsed="3.016031"/>
+</kw>
+<status status="PASS" start="2025-05-26T04:34:09.533326" elapsed="41.495246"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Feedback Analysis" id="s1" pass="1" fail="0" skip="0">Feedback Analysis</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

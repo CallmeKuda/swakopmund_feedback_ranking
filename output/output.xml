@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.10 on win32)" generated="2025-05-25T17:04:57.349298" rpa="false" schemaversion="5">
+<suite id="s1" name="Feedback Analysis" source="C:\Users\KUDA\Desktop\swakopmund_feedback_ranking\tests\feedback_analysis.robot">
+<kw name="Open Browser To NTS Reviews" type="SETUP">
+<kw name="Open Browser">
+<msg time="2025-05-25T17:04:57.457386" level="FAIL">No keyword with name 'Open Browser' found.</msg>
+<arg>${URL}</arg>
+<arg>Chrome</arg>
+<status status="FAIL" start="2025-05-25T17:04:57.457386" elapsed="0.000000">No keyword with name 'Open Browser' found.</status>
+</kw>
+<kw name="Maximize Browser Window">
+<status status="NOT RUN" start="2025-05-25T17:04:57.457386" elapsed="0.000000"/>
+</kw>
+<kw name="Wait Until Page Contains Element">
+<arg>css=.reviews-div</arg>
+<status status="NOT RUN" start="2025-05-25T17:04:57.457386" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-05-25T17:04:57.457386" elapsed="0.000000">No keyword with name 'Open Browser' found.</status>
+</kw>
+<test id="s1-t1" name="Scrape NTS Traveller Reviews" line="15">
+<doc>Scrape traveler reviews from Namibia Tours &amp; Safaris website</doc>
+<status status="FAIL" start="2025-05-25T17:04:57.457386" elapsed="0.000000">Parent suite setup failed:
+No keyword with name 'Open Browser' found.</status>
+</test>
+<kw name="Close Browser" type="TEARDOWN">
+<msg time="2025-05-25T17:04:57.476623" level="FAIL">No keyword with name 'Close Browser' found.</msg>
+<status status="FAIL" start="2025-05-25T17:04:57.476623" elapsed="0.000998">No keyword with name 'Close Browser' found.</status>
+</kw>
+<status status="FAIL" start="2025-05-25T17:04:57.355187" elapsed="0.122434">Suite setup failed:
+No keyword with name 'Open Browser' found.
+
+Also suite teardown failed:
+No keyword with name 'Close Browser' found.</status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Feedback Analysis" id="s1" pass="0" fail="1" skip="0">Feedback Analysis</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-05-25T17:04:57.414047" level="ERROR">Error in file 'C:\Users\KUDA\Desktop\swakopmund_feedback_ranking\tests\feedback_analysis.robot' on line 2: Importing library 'SeleniumLibrary' failed: ModuleNotFoundError: No module named 'SeleniumLibrary'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  C:\Users\KUDA\Desktop\swakopmund_feedback_ranking
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\python312.zip
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\DLLs
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0
+  C:\Users\KUDA\Desktop\swakopmund_feedback_ranking\.venv
+  C:\Users\KUDA\Desktop\swakopmund_feedback_ranking\.venv\Lib\site-packages</msg>
+</errors>
+</robot>

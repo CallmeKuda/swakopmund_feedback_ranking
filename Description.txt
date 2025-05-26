@@ -1,0 +1,50 @@
+1. Introduction
+
+For this project, I developed a semi-automated solution that collects and analyzes tourist feedback from the Namibia Tours & Safaris (NTS) website. The aim was to create a system that ranks Swakopmund tourist attractions based on user engagement, using the Robot Framework and Python for automation and data analysis.
+
+I chose this approach because manually going through customer reviews is inefficient and prone to error. By automating the process, the goal was to save time and also produce visual insights that reflect which experiences or attractions are most talked about by visitors.
+2. Problem Statement
+
+Swakopmund is a popular tourist destination, and many tourists leave reviews online. However, these reviews are not easily aggregated or ranked in a meaningful way. Tourism operators, local businesses, and researchers could benefit from a system that organizes and visualizes this information.
+
+The challenge I aimed to solve was how to automatically collect this feedback, evaluate it using a basic scoring system, and generate a clear and understandable ranking based on the data.
+3. My Solution
+
+I created a test suite using the Robot Framework, which opens the NTS traveler reviews page, scrapes user names and their comments using Selenium, and saves this data to a JSON file.
+
+Then, a Python script reads the JSON data and analyzes how many reviews each user has submitted. A bar chart is generated using matplotlib to visualize this, essentially ranking users by how frequently they provided feedback.
+
+This is a first step toward building a scoring system based on engagement — attractions or experiences that receive more attention from tourists appear higher on the graph.
+4. Tools I Used
+Tool/Library	Why I Chose It
+Robot Framework	Easy to build test cases and integrate steps
+SeleniumLibrary	To interact with the web and scrape data
+Python + Matplotlib	For data analysis and generating graphs
+JSON	Lightweight and readable format for storing the scraped data
+5. Ranking Logic I Applied
+
+The current scoring is simple but effective:
+
+    1 point per user review
+
+    Users with more reviews contribute more data, which I treat as more influence in the ranking
+
+Although this version only ranks based on frequency of reviews, the system is designed so I can add more advanced logic in the future, like:
+
+    Keyword analysis (positive or negative words)
+
+    Sentiment analysis using natural language processing (NLP)
+
+    Weighting based on review length or uniqueness
+
+6. Output & Evidence
+
+Here’s what the solution produces:
+
+    JSON File: All the scraped review data is saved in output/nts_reviews.json
+
+    Graph Image: A bar chart is saved as output/review_chart.png
+
+    Robot Logs & Reports: Run outputs are saved in the output/ folder (log.html, report.html)
+
+    Screenshots: I can include screenshots of the graph and review page to prove the automation works
